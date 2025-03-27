@@ -333,6 +333,17 @@ const getContacts = async (req, res) => {
  */
 const getChats = async (req, res) => {
   try {
+    /*
+      #swagger.responses[200] = {
+        description: "A Successful response",
+        content: {
+          "application/json": {
+            schema: { "$ref": "#definitions/GetChatsResponse" }
+          }
+        }
+      }
+    */
+   
     const client = sessions.get(req.params.sessionId)
     const chats = await client.getChats()
     res.json({ success: true, chats })
