@@ -141,6 +141,17 @@ const sendMessage = async (req, res) => {
  */
 const getClassInfo = async (req, res) => {
   try {
+
+    /*
+      #swagger.responses[200] = {
+        description: "A Successful response",
+        content: {
+          "application/json": {
+            schema: { "$ref": "#definitions/GetClassInfoResponse" }
+          }
+        }
+      }
+    */
     const client = sessions.get(req.params.sessionId)
     const sessionInfo = await client.info
     res.json({ success: true, sessionInfo })
