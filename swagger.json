@@ -1132,7 +1132,14 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "A Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetChatsResponse"
+                }
+              }
+            }
           },
           "403": {
             "description": "Forbidden.",
