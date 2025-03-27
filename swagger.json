@@ -7676,65 +7676,17 @@
       "ChatId": {
         "type": "object",
         "properties": {
-          "type": {
+          "server": {
             "type": "string",
-            "example": "object"
+            "example": "@c.us"
           },
-          "properties": {
-            "type": "object",
-            "properties": {
-              "server": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  },
-                  "example": {
-                    "type": "string",
-                    "example": "@c.us"
-                  },
-                  "description": {
-                    "type": "string",
-                    "example": "This represents the server identifier, such as '@c.us' for WhatsApp."
-                  }
-                }
-              },
-              "user": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  },
-                  "example": {
-                    "type": "string",
-                    "example": "5511998765432"
-                  },
-                  "description": {
-                    "type": "string",
-                    "example": "This represents a user's phone number. In this example: 'ccsspppppppp', where 'cc' is country code, 'ss' is state code, and 'pp' is the phone number without the additional '9' (specific to Brazilian numbers)."
-                  }
-                }
-              },
-              "_serialized": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  },
-                  "example": {
-                    "type": "string",
-                    "example": "5511998765432@c.us"
-                  },
-                  "description": {
-                    "type": "string",
-                    "example": "Serialized representation of the user’s phone number along with the server identifier."
-                  }
-                }
-              }
-            }
+          "user": {
+            "type": "string",
+            "example": "5511998765432"
+          },
+          "_serialized": {
+            "type": "string",
+            "example": "5511998765432@c.us"
           }
         },
         "xml": {
@@ -7744,139 +7696,39 @@
       "Chat": {
         "type": "object",
         "properties": {
-          "type": {
-            "type": "string",
-            "example": "object"
+          "id": {
+            "xml": {
+              "name": "chatid"
+            },
+            "$ref": "#/components/schemas/ChatId"
           },
-          "properties": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "xml": {
-                  "name": "chatid"
-                },
-                "$ref": "#/components/schemas/ChatId"
-              },
-              "name": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  },
-                  "example": {
-                    "type": "string",
-                    "example": "Family Group"
-                  },
-                  "description": {
-                    "type": "string",
-                    "example": "The name of the chat, such as a group chat's name."
-                  }
-                }
-              },
-              "isReadOnly": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "boolean"
-                  },
-                  "example": {
-                    "type": "boolean",
-                    "example": false
-                  },
-                  "description": {
-                    "type": "string",
-                    "example": "Indicates if the chat is read-only."
-                  }
-                }
-              },
-              "unreadCount": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "integer"
-                  },
-                  "example": {
-                    "type": "number",
-                    "example": 0
-                  },
-                  "description": {
-                    "type": "string",
-                    "example": "The number of unread messages in the chat."
-                  }
-                }
-              },
-              "timestamp": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "integer"
-                  },
-                  "example": {
-                    "type": "number",
-                    "example": 1743086789
-                  },
-                  "description": {
-                    "type": "string",
-                    "example": "The timestamp of the last update (Unix Epoch format)."
-                  }
-                }
-              },
-              "archived": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "boolean"
-                  },
-                  "example": {
-                    "type": "boolean",
-                    "example": false
-                  },
-                  "description": {
-                    "type": "string",
-                    "example": "Indicates if the chat is archived."
-                  }
-                }
-              },
-              "pinned": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "boolean"
-                  },
-                  "example": {
-                    "type": "boolean",
-                    "example": false
-                  },
-                  "description": {
-                    "type": "string",
-                    "example": "Indicates if the chat is pinned."
-                  }
-                }
-              },
-              "muteExpiration": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "integer"
-                  },
-                  "example": {
-                    "type": "number",
-                    "example": -1
-                  },
-                  "description": {
-                    "type": "string",
-                    "example": "The expiration timestamp for mute (or -1 for permanent mute)."
-                  }
-                }
-              }
-            }
+          "name": {
+            "type": "string",
+            "example": "Family Group"
+          },
+          "isReadOnly": {
+            "type": "boolean",
+            "example": false
+          },
+          "unreadCount": {
+            "type": "number",
+            "example": 0
+          },
+          "timestamp": {
+            "type": "number",
+            "example": 1743086789
+          },
+          "archived": {
+            "type": "boolean",
+            "example": false
+          },
+          "pinned": {
+            "type": "boolean",
+            "example": false
+          },
+          "muteExpiration": {
+            "type": "number",
+            "example": -1
           }
         },
         "xml": {
@@ -7886,49 +7738,17 @@
       "GetChatsResponse": {
         "type": "object",
         "properties": {
-          "type": {
-            "type": "string",
-            "example": "object"
+          "success": {
+            "type": "boolean",
+            "example": true
           },
-          "properties": {
-            "type": "object",
-            "properties": {
-              "success": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "boolean"
-                  },
-                  "example": {
-                    "type": "boolean",
-                    "example": true
-                  },
-                  "description": {
-                    "type": "string",
-                    "example": "Indicates whether the request was successful or not."
-                  }
-                }
+          "chats": {
+            "type": "array",
+            "items": {
+              "xml": {
+                "name": "chat"
               },
-              "chats": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "array"
-                  },
-                  "items": {
-                    "xml": {
-                      "name": "chat"
-                    },
-                    "$ref": "#/components/schemas/Chat"
-                  },
-                  "description": {
-                    "type": "string",
-                    "example": "A collection of chat details returned in the API response."
-                  }
-                }
-              }
+              "$ref": "#/components/schemas/Chat"
             }
           }
         },
