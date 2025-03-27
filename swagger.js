@@ -1,7 +1,7 @@
 const swaggerAutogen = require('swagger-autogen')({ openapi: '3.0.0', autoBody: false })
-
 const outputFile = './swagger.json'
 const endpointsFiles = ['./src/routes.js']
+const definitions = require('./swagger-definitions/definitions')
 
 const doc = {
   info: {
@@ -41,39 +41,7 @@ const doc = {
     }
   ],
   definitions: {
-    StartSessionResponse: {
-      success: true,
-      message: 'Session initiated successfully'
-    },
-    StatusSessionResponse: {
-      success: true,
-      state: 'CONNECTED',
-      message: 'session_connected'
-    },
-    RestartSessionResponse: {
-      success: true,
-      message: 'Restarted successfully'
-    },
-    TerminateSessionResponse: {
-      success: true,
-      message: 'Logged out successfully'
-    },
-    TerminateSessionsResponse: {
-      success: true,
-      message: 'Flush completed successfully'
-    },
-    ErrorResponse: {
-      success: false,
-      error: 'Some server error'
-    },
-    NotFoundResponse: {
-      success: false,
-      error: 'Some server error'
-    },
-    ForbiddenResponse: {
-      success: false,
-      error: 'Invalid API key'
-    }
+    ... definitions,
   }
 }
 
